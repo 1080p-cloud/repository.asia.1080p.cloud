@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.asia.1080p.cloud" name="Asia 1080p" version="0.0.1" provider-name="1080p">
+	<extension point="xbmc.addon.repository" name="Asia 1080p">
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/</datadir>
+		</dir>
+		<info compressed="false">https://raw.githubusercontent.com/1080p-cloud /repository.asia.1080p.cloud/master/zips/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/1080p-cloud /repository.asia.1080p.cloud/master/zips/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/1080p-cloud /repository.asia.1080p.cloud/master/zips/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Asia content of 1080p.Cloud</summary>
+		<description lang="en">This repo gives you access to the Asia content from 1080p.Cloud</description>
+		<genre>comedy,livetv,movies,news,sports,subscription,tvshows,african,arabic,asian,australian,austrian,belgian,brazilian,canadian,columbian,czech,danish,dominican,dutch,egyptian,filipino,finnish,french,german,greek,hebrew,hungarian,icelandic,indian,irish,italian,japanese,Korean,lebanese,mongolian,moroccan,nepali,newzealand,norwegian,pakistani,polish,portuguese,romanian,russian,singapore,spanish,swedish,swiss,syrian,tamil,thai,turkish,uk,usa,vietnamese</genre>
+	</extension>
+</addon>
