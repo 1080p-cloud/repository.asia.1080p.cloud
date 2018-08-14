@@ -29,7 +29,7 @@ from unidecode import unidecode
 
 __addon__ = xbmcaddon.Addon()
 __author__ = __addon__.getAddonInfo('author')
-ADDONNAME = __addon__.getAddonInfo('name')
+ADDONNAME = "Vaders.tv Add-ons" #__addon__.getAddonInfo('name')
 ADDONID = __addon__.getAddonInfo('id')
 __cwd__ = __addon__.getAddonInfo('path')
 __version__ = __addon__.getAddonInfo('version')
