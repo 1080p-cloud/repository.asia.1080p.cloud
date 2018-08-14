@@ -122,7 +122,7 @@ class MyAddon(BaseWindow):
 
 
         if action.getId() == xbmcgui.ACTION_PREVIOUS_MENU or action.getId() == xbmcgui.ACTION_NAV_BACK:
-            # xbmc.executebuiltin("RunPlugin(plugin://plugin.video.VADER/menu)")
+            # xbmc.executebuiltin("RunPlugin(plugin://plugin.video.asia.1080p.cloud/menu)")
             plugintools.set_setting('mcClosedTime', str(int(time.time())))
 
             self.close()
