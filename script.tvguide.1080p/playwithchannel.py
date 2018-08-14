@@ -10,7 +10,7 @@ import re
 def log(what):
     xbmc.log(repr(what))
 
-ADDON = xbmcaddon.Addon(id='script.tvguide.Vader')
+ADDON = xbmcaddon.Addon(id='script.tvguide.1080p')
 
 channel = sys.argv[1]
 start = sys.argv[2]
@@ -30,12 +30,12 @@ sqlite3.register_converter('timestamp', convert_datetime)
 ADDON.setSetting('playing.channel',channel)
 ADDON.setSetting('playing.start',start)
 
-path = xbmc.translatePath('special://profile/addon_data/script.tvguide.Vader/source.db')
+path = xbmc.translatePath('special://profile/addon_data/script.tvguide.1080p/source.db')
 try:
     conn = sqlite3.connect(path, detect_types=sqlite3.PARSE_DECLTYPES)
     conn.row_factory = sqlite3.Row
 except Exception as detail:
-    xbmc.log("EXCEPTION: (script.tvguide.Vader)  %s" % detail, xbmc.LOGERROR)
+    xbmc.log("EXCEPTION: (script.tvguide.1080p)  %s" % detail, xbmc.LOGERROR)
 
 ffmpeg = ADDON.getSetting('autoplaywiths.ffmpeg')
 if ffmpeg:

@@ -53,7 +53,7 @@ from resources.lib.pytz import timezone
 try:
     import dateutil.parser
 except:
-    xbmc.log('[script.tvguide.Vader] ...failed to load dateutil try local', xbmc.LOGNOTICE)
+    xbmc.log('[script.tvguide.1080p] ...failed to load dateutil try local', xbmc.LOGNOTICE)
     import resources.lib.dateutil.parser
 
 
@@ -104,7 +104,7 @@ class Database(object):
     CHANNELS_PER_PAGE = int(ADDON.getSetting('channels.per.page'))
 
     def __init__(self,force=False):
-        xbmc.log('[script.tvguide.Vader] ...database started', xbmc.LOGNOTICE)
+        xbmc.log('[script.tvguide.1080p] ...database started', xbmc.LOGNOTICE)
 
         self.conn = None
         self.eventQueue = list()
@@ -210,15 +210,15 @@ class Database(object):
 
             except sqlite3.OperationalError:
                 if cancel_requested_callback is None:
-                    xbmc.log('[script.tvguide.Vader] Database is locked, bailing out...', xbmc.LOGDEBUG)
+                    xbmc.log('[script.tvguide.1080p] Database is locked, bailing out...', xbmc.LOGDEBUG)
                     break
                 else:  # ignore 'database is locked'
-                    xbmc.log('[script.tvguide.Vader] Database is locked, retrying...', xbmc.LOGDEBUG)
+                    xbmc.log('[script.tvguide.1080p] Database is locked, retrying...', xbmc.LOGDEBUG)
 
             except sqlite3.DatabaseError:
                 self.conn = None
                 if self.alreadyTriedUnlinking:
-                    xbmc.log('[script.tvguide.Vader] Database is broken and unlink() failed', xbmc.LOGDEBUG)
+                    xbmc.log('[script.tvguide.1080p] Database is broken and unlink() failed', xbmc.LOGDEBUG)
                     break
                 else:
                     try:
@@ -329,12 +329,12 @@ class Database(object):
         sqlite3.register_adapter(datetime.datetime, self.adapt_datetime)
         sqlite3.register_converter('timestamp', self.convert_datetime)
 
-        lock = 'special://profile/addon_data/script.tvguide.Vader/db.lock'
+        lock = 'special://profile/addon_data/script.tvguide.1080p/db.lock'
         if xbmcvfs.exists(lock):
-            xbmc.log('[script.tvguide.Vader] db currently locked...', xbmc.LOGDEBUG)
+            xbmc.log('[script.tvguide.1080p] db currently locked...', xbmc.LOGDEBUG)
 
             return
-        xbmc.log('[script.tvguide.Vader] Updating chan & programs ...', xbmc.LOGDEBUG)
+        xbmc.log('[script.tvguide.1080p] Updating chan & programs ...', xbmc.LOGDEBUG)
 
         isCacheExpired = self._isCacheExpired(date)
         needReset = self.source.needReset
@@ -360,7 +360,7 @@ class Database(object):
         dateStr = date.strftime('%Y-%m-%d')
         c = self.conn.cursor()
         try:
-            xbmc.log('[script.tvguide.Vader] Updating caches...', xbmc.LOGDEBUG)
+            xbmc.log('[script.tvguide.1080p] Updating caches...', xbmc.LOGDEBUG)
             if progress_callback:
                 progress_callback(0)
 
@@ -394,7 +394,7 @@ class Database(object):
             imported = imported_channels = imported_programs = 0
 
             if getData == True:
-                xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/category_count.ini')
+                xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/category_count.ini')
                 catchup = ADDON.getSetting('catchup.text')
                 channel = Channel("catchup", catchup, '', "special://home/addons/plugin.video.%s/icon.png" % catchup.lower(), "catchup", ADDON.getSetting('catchup.channel') == 'true')
                 c.execute(
@@ -402,7 +402,7 @@ class Database(object):
                     [channel.id, channel.title, channel.logo, channel.streamUrl, channel.visible, channel.weight,
                      self.source.KEY, channel.weight, self.source.KEY])
                 for item in self.source.getDataFromExternal(date, ch_list, progress_callback):
-                    # xbmc.log('[script.tvguide.Vader] ...' + str(self.source.KEY)  + '... ' + str(), xbmc.LOGNOTICE)
+                    # xbmc.log('[script.tvguide.1080p] ...' + str(self.source.KEY)  + '... ' + str(), xbmc.LOGNOTICE)
 
                     imported += 1
 
@@ -411,9 +411,9 @@ class Database(object):
                             self.conn.commit()
                         except:
                             import traceback
-                            xbmc.log('[script.tvguide.Vader] ' + str(item), xbmc.LOGNOTICE)
+                            xbmc.log('[script.tvguide.1080p] ' + str(item), xbmc.LOGNOTICE)
                             tb = traceback.format_exc()
-                            xbmc.log('[script.tvguide.Vader] ' + str(tb), xbmc.LOGNOTICE)
+                            xbmc.log('[script.tvguide.1080p] ' + str(tb), xbmc.LOGNOTICE)
                             break
 
 
@@ -451,9 +451,9 @@ class Database(object):
                              program.language, self.source.KEY, updatesId])
                         except:
                             import traceback
-                            xbmc.log('[script.tvguide.Vader] ' + str(item), xbmc.LOGNOTICE)
+                            xbmc.log('[script.tvguide.1080p] ' + str(item), xbmc.LOGNOTICE)
                             tb = traceback.format_exc()
-                            xbmc.log('[script.tvguide.Vader] ' + str(tb), xbmc.LOGNOTICE)
+                            xbmc.log('[script.tvguide.1080p] ' + str(tb), xbmc.LOGNOTICE)
                             pass
 
                 # channels updated
@@ -691,7 +691,7 @@ class Database(object):
     def exportChannelList(self):
         channelsList = self.getChannelList(False,True)
         channels = [channel.title for channel in channelsList]
-        f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/channels.ini','wb')
+        f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/channels.ini','wb')
         for channel in sorted(channels):
             f.write("%s=nothing\n" % channel.encode("utf8"))
         f.close()
@@ -699,7 +699,7 @@ class Database(object):
     def exportChannelIdList(self):
         channelsList = self.getChannelList(False,True)
         channels = [(channel.id,channel.title) for channel in channelsList]
-        f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/channel_id_title.ini','wb')
+        f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/channel_id_title.ini','wb')
         for channel in sorted(channels,key=lambda x: x[1].lower()):
             f.write("%s=%s\n" % (channel[0].encode("utf8"),channel[1].encode("utf8")))
         f.close()
@@ -720,7 +720,7 @@ class Database(object):
             channelList.append(channel)
 
         if all == False and self.category and self.category != "Any":
-            f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/categories.ini','rb')
+            f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/categories.ini','rb')
             lines = f.read().splitlines()
             f.close()
             filter = []
@@ -1088,7 +1088,7 @@ class Database(object):
         if stream_url is not None:
             image = ""
             if ADDON.getSetting("addon.logos") == "true":
-                file_name = 'special://profile/addon_data/script.tvguide.Vader/icons.ini'
+                file_name = 'special://profile/addon_data/script.tvguide.1080p/icons.ini'
                 f = xbmcvfs.File(file_name)
                 items = f.read().splitlines()
                 f.close()
@@ -1384,9 +1384,9 @@ class Database(object):
 
         #except sqlite3.OperationalError, ex:
         except Exception as detail:
-            xbmc.log("(script.tvguide.Vader) %s" % detail, xbmc.LOGERROR)
+            xbmc.log("(script.tvguide.1080p) %s" % detail, xbmc.LOGERROR)
             dialog = xbmcgui.Dialog()
-            dialog.notification('script.tvguide.Vader', 'database exception %s' % detail, xbmcgui.NOTIFICATION_ERROR , 5000)
+            dialog.notification('script.tvguide.1080p', 'database exception %s' % detail, xbmcgui.NOTIFICATION_ERROR , 5000)
             #raise DatabaseSchemaException(detail)
 
     def addNotification(self, program,type):
@@ -1649,7 +1649,7 @@ class Source(object):
 
 
 class XMLTVSource(Source):
-    PLUGIN_DATA = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.tvguide.Vader'))
+    PLUGIN_DATA = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.tvguide.1080p'))
     KEY = 'xmltv'
     INI_TYPE_FILE = 0
     INI_TYPE_URL = 1
@@ -1691,11 +1691,11 @@ class XMLTVSource(Source):
         #     '''
         #     if os.path.exists(customFile):
         #         # uses local file provided by user!
-        #         xbmc.log('[script.tvguide.Vader] Use local file: %s' % customFile, xbmc.LOGDEBUG)
+        #         xbmc.log('[script.tvguide.1080p] Use local file: %s' % customFile, xbmc.LOGDEBUG)
         #         self.xmltvFile = customFile
         #     else:
         #         # Probably a remote file
-        #         xbmc.log('[script.tvguide.Vader] Use remote file: %s' % customFile, xbmc.LOGDEBUG)
+        #         xbmc.log('[script.tvguide.1080p] Use remote file: %s' % customFile, xbmc.LOGDEBUG)
         #         self.updateLocalFile(customFile, addon, force=force)
         #         self.xmltvFile = customFile #os.path.join(XMLTVSource.PLUGIN_DATA, customFile.split('/')[-1])
         #     '''
@@ -1712,11 +1712,11 @@ class XMLTVSource(Source):
         #         customFile = str(addon.getSetting('xmltv2.file'))
         #         if os.path.exists(customFile):
         #             # uses local file provided by user!
-        #             xbmc.log('[script.tvguide.Vader] Use local file: %s' % customFile, xbmc.LOGDEBUG)
+        #             xbmc.log('[script.tvguide.1080p] Use local file: %s' % customFile, xbmc.LOGDEBUG)
         #             self.xmltv2File = customFile
         #         else:
         #             # Probably a remote file
-        #             xbmc.log('[script.tvguide.Vader] Use remote file: %s' % customFile, xbmc.LOGDEBUG)
+        #             xbmc.log('[script.tvguide.1080p] Use remote file: %s' % customFile, xbmc.LOGDEBUG)
         #             self.updateLocalFile(customFile, addon, force=force)
         #             self.xmltv2File = customFile #os.path.join(XMLTVSource.PLUGIN_DATA, customFile.split('/')[-1])
         #         '''
@@ -1750,7 +1750,7 @@ class XMLTVSource(Source):
         d = xbmcgui.Dialog()
         subscription_streams = {}
         if (ADDON.getSetting('addons.ini.subscriptions') == "true"):
-            file_name = 'special://home/userdata/addon_data/script.tvguide.Vader/subscriptions.ini'
+            file_name = 'special://home/userdata/addon_data/script.tvguide.1080p/subscriptions.ini'
             f = xbmcvfs.File(file_name,"rb")
             data = f.read()
             f.close()
@@ -1770,12 +1770,12 @@ class XMLTVSource(Source):
                         subscription_streams[name.strip()] = stream.strip()
 
 
-        path = "special://profile/addon_data/script.tvguide.Vader/addons.ini"
+        path = "special://profile/addon_data/script.tvguide.1080p/addons.ini"
         if not xbmcvfs.exists(path):
             f = xbmcvfs.File(path,"w")
             f.close()
 
-        addons_ini = "special://profile/addon_data/script.tvguide.Vader/addons.ini"
+        addons_ini = "special://profile/addon_data/script.tvguide.1080p/addons.ini"
         addons_ini_local = addons_ini+".local"
         if addon.getSetting('addons.ini.enabled') == 'true':
             if self.addonsType == XMLTVSource.INI_TYPE_FILE:
@@ -1788,7 +1788,7 @@ class XMLTVSource(Source):
 
         if (ADDON.getSetting('addons.ini.subscriptions') == "true") or (ADDON.getSetting('addons.ini.overwrite') == "1"):
             streams = {}
-            streams["script.tvguide.Vader"] = {}
+            streams["script.tvguide.1080p"] = {}
             if (ADDON.getSetting('addons.ini.enabled') == "true") and (ADDON.getSetting('addons.ini.overwrite') == "1"):
                 filenames = [addons_ini_local,addons_ini]
             else:
@@ -1823,7 +1823,7 @@ class XMLTVSource(Source):
             if (ADDON.getSetting('addons.ini.subscriptions') == "true"):
                 for name in subscription_streams:
                     if name:
-                        streams["script.tvguide.Vader"][name] = subscription_streams[name]
+                        streams["script.tvguide.1080p"][name] = subscription_streams[name]
 
             f = xbmcvfs.File(addons_ini,"wb")
             for addon in sorted(streams):
@@ -1870,14 +1870,14 @@ class XMLTVSource(Source):
         streamsTxt = 'Not Ready'
         while tries < 5 and streams == None:
             try:
-                xbmc.log('[script.tvguide.Vader] trying to get stream list ' + str(tries), xbmc.LOGNOTICE)
+                xbmc.log('[script.tvguide.1080p] trying to get stream list ' + str(tries), xbmc.LOGNOTICE)
 
                 streamsTxt = requests.get('http://localhost:62555/getStreams').text
-                xbmc.log('[script.tvguide.Vader] got streams', xbmc.LOGNOTICE)
+                xbmc.log('[script.tvguide.1080p] got streams', xbmc.LOGNOTICE)
 
                 streams = json.loads(streamsTxt)
                 credsTxt = requests.get('http://localhost:62555/getCreds').text
-                xbmc.log('[script.tvguide.Vader] got creds', xbmc.LOGNOTICE)
+                xbmc.log('[script.tvguide.1080p] got creds', xbmc.LOGNOTICE)
 
                 creds = json.loads(credsTxt)
                 username = creds['username']
@@ -1886,8 +1886,8 @@ class XMLTVSource(Source):
                 time.sleep(2)
                 tries = tries + 1
                 # tb = traceback.format_exc()
-                xbmc.log('[script.tvguide.Vader] ' + str(tb), xbmc.LOGNOTICE)
-                xbmc.log('[script.tvguide.Vader] streams response: ' + streamsTxt, xbmc.LOGNOTICE )
+                xbmc.log('[script.tvguide.1080p] ' + str(tb), xbmc.LOGNOTICE)
+                xbmc.log('[script.tvguide.1080p] streams response: ' + streamsTxt, xbmc.LOGNOTICE )
                 pass
 
         from HTMLParser import HTMLParser
@@ -1919,7 +1919,7 @@ class XMLTVSource(Source):
                 epgEnd = addDays.strftime("%Y%m%d%H%M%S")
             except:
                 tb = traceback.format_exc()
-                xbmc.log('[script.tvguide.Vader] ' + str(tb), xbmc.LOGNOTICE)
+                xbmc.log('[script.tvguide.1080p] ' + str(tb), xbmc.LOGNOTICE)
 
         else:
             if ADDON.getSetting('epg.forward') == "0":
@@ -1944,18 +1944,18 @@ class XMLTVSource(Source):
         #     epgUrl = 'http://vaders.tv/epg?gzip=true&start={epgStart}&end={epgEnd}&stream_id={stream_id}'.format(stream_id=stream_id,epgStart=epgStart, epgEnd=epgEnd)
         epgUrl = 'http://vapi.vaders.tv/epg/channels?username={username}&password={password}&start={epgStart}&end={epgEnd}'.format(epgStart=epgStart, epgEnd=epgEnd, username=username, password=password)
 
-        # xbmc.log('[script.tvguide.Vader] ' + str(epgUrl), xbmc.LOGNOTICE)
+        # xbmc.log('[script.tvguide.1080p] ' + str(epgUrl), xbmc.LOGNOTICE)
 
         programsReq = requests.get(epgUrl, timeout=120)
         programsReq.encoding = 'utf-8'
         programsText = programsReq.text
 
         # programsText = unicode(programsText, 'utf-8')
-        xbmc.log('[script.tvguide.Vader] downloaded json txt', xbmc.LOGNOTICE)
+        xbmc.log('[script.tvguide.1080p] downloaded json txt', xbmc.LOGNOTICE)
 
         channels = json.loads(programsText, encoding='utf-8')
 
-        xbmc.log('[script.tvguide.Vader] loaded json epg', xbmc.LOGNOTICE)
+        xbmc.log('[script.tvguide.1080p] loaded json epg', xbmc.LOGNOTICE)
         totalCount = len(channels)
         dialog.create('EPG Updater', 'Updating EPG...')
         del programsText
@@ -2004,7 +2004,7 @@ class XMLTVSource(Source):
                                                     catString = catString + str(category['content'].encode('utf-8').decode('ascii', 'ignore'))
                                                 except:
                                                     tb = traceback.format_exc()
-                                                    xbmc.log('[script.tvguide.Vader] ' + str(tb), xbmc.LOGNOTICE)
+                                                    xbmc.log('[script.tvguide.1080p] ' + str(tb), xbmc.LOGNOTICE)
                                                     pass
                                             else:
                                                 catString = catString + str(category)
@@ -2027,13 +2027,13 @@ class XMLTVSource(Source):
                                 yield result
                 #
                     # else:
-                    #     xbmc.log('[script.tvguide.Vader] ' + str(program), xbmc.LOGNOTICE)
+                    #     xbmc.log('[script.tvguide.1080p] ' + str(program), xbmc.LOGNOTICE)
             except:
                 if dialog:
                     dialog.close()
-                # xbmc.log('[script.tvguide.Vader] ' + str(program), xbmc.LOGNOTICE)
+                # xbmc.log('[script.tvguide.1080p] ' + str(program), xbmc.LOGNOTICE)
                 tb = traceback.format_exc()
-                xbmc.log('[script.tvguide.Vader] ' + str(tb), xbmc.LOGNOTICE)
+                xbmc.log('[script.tvguide.1080p] ' + str(tb), xbmc.LOGNOTICE)
 
 
 
@@ -2092,7 +2092,7 @@ class XMLTVSource(Source):
             try:
                 t_tmp = datetime.datetime.strptime(dateString, '%Y%m%d%H%M%S')
             except TypeError:
-                # xbmc.log('[script.tvguide.Vader] strptime error with this date: %s' % dateString, xbmc.LOGDEBUG)
+                # xbmc.log('[script.tvguide.1080p] strptime error with this date: %s' % dateString, xbmc.LOGDEBUG)
                 t_tmp = datetime.datetime.fromtimestamp(time.mktime(time.strptime(dateString, '%Y%m%d%H%M%S')))
             if offSign == '+':
                 t = t_tmp - td
@@ -2119,12 +2119,12 @@ class XMLTVSource(Source):
             throwaway = datetime.datetime.strptime('20110101','%Y%m%d') #BUG FIX http://stackoverflow.com/questions/16309650/python-importerror-for-strptime-in-spyder-for-windows-7
         except:
             tb = traceback.format_exc()
-            xbmc.log('[script.tvguide.Vader] ' + str(tb), xbmc.LOGNOTICE)
+            xbmc.log('[script.tvguide.1080p] ' + str(tb), xbmc.LOGNOTICE)
             pass
         event, root = context.next()
         elements_parsed = 0
 
-        data = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/channel_id_shortcut.ini','rb').read()
+        data = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/channel_id_shortcut.ini','rb').read()
         id_shortcuts = {}
         if data:
             lines = data.splitlines()
@@ -2284,7 +2284,7 @@ class XMLTVSource(Source):
         if ADDON.getSetting('update.progress') == 'true':
             d.update(100, message="Done")
             d.close()
-        f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/category_count.ini',"wb")
+        f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/category_count.ini',"wb")
         for c in sorted(category_count):
             s = "%s=%s\n" % (c, category_count[c])
             f.write(s.encode("utf8"))

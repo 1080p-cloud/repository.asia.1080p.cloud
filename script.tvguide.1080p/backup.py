@@ -8,7 +8,7 @@ import time
 import requests
 import base64
 
-ADDON = xbmcaddon.Addon(id = 'script.tvguide.Vader')
+ADDON = xbmcaddon.Addon(id = 'script.tvguide.1080p')
 
 def log(x):
     xbmc.log(repr(x))
@@ -16,7 +16,7 @@ def log(x):
 def getCustomStreamUrls(success):
     if success:
         stream_urls = database.getCustomStreamUrls()
-        file_name = 'special://profile/addon_data/script.tvguide.Vader/custom_stream_urls.ini'
+        file_name = 'special://profile/addon_data/script.tvguide.1080p/custom_stream_urls.ini'
         f = xbmcvfs.File(file_name,'wb')
         for (name,stream) in stream_urls:
             write_str = "%s=%s\n" % (name,stream)
@@ -28,7 +28,7 @@ def getCustomStreamUrls(success):
 
 def setCustomStreamUrls(success):
     if success:
-        file_name = 'special://profile/addon_data/script.tvguide.Vader/custom_stream_urls.ini'
+        file_name = 'special://profile/addon_data/script.tvguide.1080p/custom_stream_urls.ini'
         f = xbmcvfs.File(file_name)
         lines = f.read().splitlines()
         stream_urls = [line.split("=",1) for line in lines]
@@ -41,7 +41,7 @@ def setCustomStreamUrls(success):
 def getAltCustomStreamUrls(success):
     if success:
         stream_urls = database.getAltCustomStreamUrls()
-        file_name = 'special://profile/addon_data/script.tvguide.Vader/alt_custom_stream_urls.tsv'
+        file_name = 'special://profile/addon_data/script.tvguide.1080p/alt_custom_stream_urls.tsv'
         f = xbmcvfs.File(file_name,'wb')
         for (name,title,stream) in stream_urls:
             write_str = "%s\t%s\t%s\n" % (name,title,stream)
@@ -53,7 +53,7 @@ def getAltCustomStreamUrls(success):
 
 def setAltCustomStreamUrls(success):
     if success:
-        file_name = 'special://profile/addon_data/script.tvguide.Vader/alt_custom_stream_urls.tsv'
+        file_name = 'special://profile/addon_data/script.tvguide.1080p/alt_custom_stream_urls.tsv'
         f = xbmcvfs.File(file_name)
         lines = f.read().splitlines()
         stream_urls = [line.split("\t",2) for line in lines]

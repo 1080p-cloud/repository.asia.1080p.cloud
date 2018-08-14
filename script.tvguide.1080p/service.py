@@ -45,7 +45,7 @@ class Service(object):
 
     def onInit(self, success):
         if success:
-            xbmc.log("[script.tvguide.Vader] Background Update Starting...", xbmc.LOGNOTICE)
+            xbmc.log("[script.tvguide.1080p] Background Update Starting...", xbmc.LOGNOTICE)
             thread = Thread(name='update_db', target=self.database.updateChannelAndProgramListCaches, args=[self.onCachesUpdated])
             thread.start()
         else:
@@ -63,16 +63,16 @@ class Service(object):
             n = autoplaywith.Autoplaywith(self.database, ADDON.getAddonInfo('path'))
             #n.scheduleAutoplaywiths()
         self.database.close(None)
-        xbmc.log("[script.tvguide.Vader] Background Update Finished", xbmc.LOGNOTICE)
+        xbmc.log("[script.tvguide.1080p] Background Update Finished", xbmc.LOGNOTICE)
         if ADDON.getSetting('background.notify') == 'false':
             d = xbmcgui.Dialog()
             d.notification("TV Guide", "Finished Updating")
 if __name__ == '__main__':
-    ADDON = xbmcaddon.Addon('script.tvguide.Vader')
+    ADDON = xbmcaddon.Addon('script.tvguide.1080p')
 
     # version = ADDON.getAddonInfo('version')
     # if ADDON.getSetting('version') != version:
-    #     #text = xbmcvfs.File('special://home/addons/script.tvguide.Vader/changelog.txt','rb').read()
+    #     #text = xbmcvfs.File('special://home/addons/script.tvguide.1080p/changelog.txt','rb').read()
     #     #xbmcgui.Dialog().textviewer("Vader TV Guide",text)
     #     ADDON.setSetting('version', version)
     #     headers = {'user-agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 'referer':'http://%s.%s.com' % (version,ADDON.getAddonInfo('id'))}
@@ -81,21 +81,21 @@ if __name__ == '__main__':
     #         home = r.content
     #     except: pass
 
-    xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/source.db-journal')
-    lock = 'special://profile/addon_data/script.tvguide.Vader/db.lock'
+    xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/source.db-journal')
+    lock = 'special://profile/addon_data/script.tvguide.1080p/db.lock'
     xbmcvfs.delete(lock)
     try:
         if ADDON.getSetting('autostart') == "true":
-            xbmc.executebuiltin("RunAddon(script.tvguide.Vader)")
+            xbmc.executebuiltin("RunAddon(script.tvguide.1080p)")
 
         if ADDON.getSetting('background.service') == 'true':
             monitor = xbmc.Monitor()
-            xbmc.log("[script.tvguide.Vader] Background service started...", xbmc.LOGDEBUG)
+            xbmc.log("[script.tvguide.1080p] Background service started...", xbmc.LOGDEBUG)
             if ADDON.getSetting('background.startup') == 'true':
                 # Service() #don't run on start up
                 ADDON.setSetting('last.background.update', str(time.time()))
                 if ADDON.getSetting('service.addon.folders') == "true":
-                    xbmc.executebuiltin('RunScript(special://home/addons/script.tvguide.Vader/ReloadAddonFolders.py)')
+                    xbmc.executebuiltin('RunScript(special://home/addons/script.tvguide.1080p/ReloadAddonFolders.py)')
             while not monitor.abortRequested():
                 interval = int(ADDON.getSetting('service.interval'))
                 waitTime = 21600  # Default 6hrs
@@ -115,17 +115,17 @@ if __name__ == '__main__':
                 timeLeft = td.seconds + (td.days * 24 * 3600)
                 if timeLeft < 0:
                     timeLeft = 0
-                xbmc.log("[script.tvguide.Vader] Service waiting for interval %s" % waitTime, xbmc.LOGDEBUG)
+                xbmc.log("[script.tvguide.1080p] Service waiting for interval %s" % waitTime, xbmc.LOGDEBUG)
                 if timeLeft and monitor.waitForAbort(timeLeft):
                     break
-                xbmc.log("[script.tvguide.Vader] Service now triggered...", xbmc.LOGDEBUG)
+                xbmc.log("[script.tvguide.1080p] Service now triggered...", xbmc.LOGDEBUG)
                 Service()
                 if ADDON.getSetting('service.addon.folders') == "true":
-                    xbmc.executebuiltin('RunScript(special://home/addons/script.tvguide.Vader/ReloadAddonFolders.py)')
+                    xbmc.executebuiltin('RunScript(special://home/addons/script.tvguide.1080p/ReloadAddonFolders.py)')
                 now = time.time()
                 ADDON.setSetting('last.background.update', str(now))
 
     except source.SourceNotConfiguredException:
         pass  # ignore
     except Exception, ex:
-        xbmc.log('[script.tvguide.Vader] Uncaught exception in service.py: %s' % str(ex), xbmc.LOGDEBUG)
+        xbmc.log('[script.tvguide.1080p] Uncaught exception in service.py: %s' % str(ex), xbmc.LOGDEBUG)

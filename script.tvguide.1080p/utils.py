@@ -233,11 +233,11 @@ def autocrop_image(image, border = 0):
     return cropped_image
 
 def getLogo(title,ask=False,force=True):
-    infile = xbmc.translatePath("special://profile/addon_data/script.tvguide.Vader/logos/temp.png")
-    outfile = xbmc.translatePath("special://profile/addon_data/script.tvguide.Vader/logos/%s.png" % title)
+    infile = xbmc.translatePath("special://profile/addon_data/script.tvguide.1080p/logos/temp.png")
+    outfile = xbmc.translatePath("special://profile/addon_data/script.tvguide.1080p/logos/%s.png" % title)
     if not force and xbmcvfs.exists(outfile):
         return outfile
-    xbmcvfs.mkdirs("special://profile/addon_data/script.tvguide.Vader/logos")
+    xbmcvfs.mkdirs("special://profile/addon_data/script.tvguide.1080p/logos")
     db_url = "http://www.thelogodb.com/api/json/v1/4423/tvchannel.php?s=%s" % re.sub(' ','+',title)
     try: json = requests.get(db_url).json()
     except: pass
@@ -257,7 +257,7 @@ def getLogo(title,ask=False,force=True):
                     return None
                 logo = re.sub('^https','http',logo)
                 data = requests.get(logo).content
-                f = xbmcvfs.File("special://profile/addon_data/script.tvguide.Vader/logos/temp.png","wb")
+                f = xbmcvfs.File("special://profile/addon_data/script.tvguide.1080p/logos/temp.png","wb")
                 f.write(data)
                 f.close()
                 from PIL import Image, ImageOps

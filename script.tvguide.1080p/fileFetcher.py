@@ -38,7 +38,7 @@ import hashlib
 import sys
 import shutil
 
-ADDON = xbmcaddon.Addon(id='script.tvguide.Vader')
+ADDON = xbmcaddon.Addon(id='script.tvguide.1080p')
 
 def log(x):
     xbmc.log(repr(x))
@@ -59,7 +59,7 @@ class FileFetcher(object):
     TYPE_DEFAULT = 1
     TYPE_REMOTE = 2
 
-    basePath = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.tvguide.Vader'))
+    basePath = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.tvguide.1080p'))
     filePath = ''
     fileUrl = ''
     addon = None
@@ -118,7 +118,7 @@ class FileFetcher(object):
                 auth = (user, password)
             tmpFile = os.path.join(self.basePath, self.fileName+'.tmp')
             if self.fileType == self.TYPE_DEFAULT:
-                xbmc.log('[script.tvguide.Vader] file is in remote location: %s' % self.fileUrl, xbmc.LOGDEBUG)
+                xbmc.log('[script.tvguide.1080p] file is in remote location: %s' % self.fileUrl, xbmc.LOGDEBUG)
                 if xbmcvfs.exists(self.filePath):
                     st = xbmcvfs.Stat(self.fileUrl)
                     src_modified = st.st_mtime()
@@ -127,7 +127,7 @@ class FileFetcher(object):
                     if src_modified <= dst_modified:
                         return self.FETCH_NOT_NEEDED
                 if not xbmcvfs.copy(self.fileUrl, tmpFile):
-                    xbmc.log('[script.tvguide.Vader] Remote file couldn\'t be copied: %s' % self.fileUrl, xbmc.LOGERROR)
+                    xbmc.log('[script.tvguide.1080p] Remote file couldn\'t be copied: %s' % self.fileUrl, xbmc.LOGERROR)
             else:
 
                 if self.addon.getSetting('md5') == 'true':
@@ -139,12 +139,12 @@ class FileFetcher(object):
                         if r.status_code == requests.codes.ok:
                             new_md5 = r.text.encode('ascii', 'ignore')[:32]
                     except Exception as detail:
-                        xbmc.log('[script.tvguide.Vader] Missing md5: %s.md5 (%s)' % (self.fileUrl,detail), xbmc.LOGERROR)
+                        xbmc.log('[script.tvguide.1080p] Missing md5: %s.md5 (%s)' % (self.fileUrl,detail), xbmc.LOGERROR)
                     #log((old_md5,new_md5))
                     if old_md5 and (old_md5 == new_md5) and (self.addon.getSetting('xmltv.refresh') == 'false'):
                         return self.FETCH_NOT_NEEDED
                 f = open(tmpFile, 'wb')
-                xbmc.log('[script.tvguide.Vader] file is on the internet: %s' % self.fileUrl, xbmc.LOGDEBUG)
+                xbmc.log('[script.tvguide.1080p] file is on the internet: %s' % self.fileUrl, xbmc.LOGDEBUG)
                 total = 0
                 fileUrl = self.fileUrl
                 if ADDON.getSetting('gz') == 'true':
@@ -155,16 +155,16 @@ class FileFetcher(object):
                         if ADDON.getSetting('gz') == 'true':
                             r = requests.get(self.fileUrl,auth=auth, stream=True, verify=False)
                             if r.status_code != requests.codes.ok:
-                                xbmc.log('[script.tvguide.Vader] no file: %s' % self.fileUrl, xbmc.LOGERROR)
+                                xbmc.log('[script.tvguide.1080p] no file: %s' % self.fileUrl, xbmc.LOGERROR)
                                 xbmcgui.Dialog().notification("TV Guide", "bad status code %s" % self.fileUrl,xbmcgui.NOTIFICATION_ERROR)
                         else:
-                            xbmc.log('[script.tvguide.Vader] no file: %s' % fileUrl, xbmc.LOGERROR)
+                            xbmc.log('[script.tvguide.1080p] no file: %s' % fileUrl, xbmc.LOGERROR)
                             xbmcgui.Dialog().notification("TV Guide", "bad status code %s " % fileUrl,xbmcgui.NOTIFICATION_ERROR)
                             return self.FETCH_NOT_NEEDED
                     if "Content-Length" in r.headers:
                         total = int(r.headers['Content-Length'])
                 except Exception as detail:
-                    xbmc.log('[script.tvguide.Vader] bad request: %s (%s)' % (fileUrl,detail), xbmc.LOGERROR)
+                    xbmc.log('[script.tvguide.1080p] bad request: %s (%s)' % (fileUrl,detail), xbmc.LOGERROR)
                     xbmcgui.Dialog().notification("TV Guide", "failed to download %s " % fileUrl,xbmcgui.NOTIFICATION_ERROR)
                     return self.FETCH_NOT_NEEDED
 
@@ -214,7 +214,7 @@ class FileFetcher(object):
                     md5.update(xbmcvfs.File(self.filePath,"rb").read())
                     md5_file = md5.hexdigest()
                     if md5_file != new_md5:
-                        xbmc.log('[script.tvguide.Vader] md5 mismatch: %s calculated:%s server:%s' % (self.fileUrl,md5_file,new_md5), xbmc.LOGERROR)
+                        xbmc.log('[script.tvguide.1080p] md5 mismatch: %s calculated:%s server:%s' % (self.fileUrl,md5_file,new_md5), xbmc.LOGERROR)
                         choice = xbmcgui.Dialog().yesno("V Guide", "Failed md5 check. Would you like to try again?")
                         if choice == 0:
                             try: shutil.rmtree(basePath)
@@ -224,5 +224,5 @@ class FileFetcher(object):
                         md5_pass = 1
                 else: md5_pass = 1
             retVal = self.FETCH_OK
-            xbmc.log('[script.tvguide.Vader] file %s was downloaded' % self.filePath, xbmc.LOGDEBUG)
+            xbmc.log('[script.tvguide.1080p] file %s was downloaded' % self.filePath, xbmc.LOGDEBUG)
         return retVal

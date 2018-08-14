@@ -33,8 +33,8 @@ import xbmcvfs
 
 def deleteDB():
     try:
-        xbmc.log("[script.tvguide.Vader] Deleting database...", xbmc.LOGDEBUG)
-        dbPath = xbmc.translatePath(xbmcaddon.Addon(id = 'script.tvguide.Vader').getAddonInfo('profile'))
+        xbmc.log("[script.tvguide.1080p] Deleting database...", xbmc.LOGDEBUG)
+        dbPath = xbmc.translatePath(xbmcaddon.Addon(id = 'script.tvguide.1080p').getAddonInfo('profile'))
         dbPath = os.path.join(dbPath, 'source.db')
 
         delete_file(dbPath)
@@ -42,14 +42,14 @@ def deleteDB():
         passed = not os.path.exists(dbPath)
 
         if passed:
-            xbmc.log("[script.tvguide.Vader] Deleting database...PASSED", xbmc.LOGDEBUG)
+            xbmc.log("[script.tvguide.1080p] Deleting database...PASSED", xbmc.LOGDEBUG)
         else:
-            xbmc.log("[script.tvguide.Vader] Deleting database...FAILED", xbmc.LOGDEBUG)
+            xbmc.log("[script.tvguide.1080p] Deleting database...FAILED", xbmc.LOGDEBUG)
 
         return passed
 
     except Exception, e:
-        xbmc.log('[script.tvguide.Vader] Deleting database...EXCEPTION', xbmc.LOGDEBUG)
+        xbmc.log('[script.tvguide.1080p] Deleting database...EXCEPTION', xbmc.LOGDEBUG)
         return False
 
 def delete_file(filename):
@@ -87,46 +87,46 @@ if __name__ == '__main__':
                 d = xbmcgui.Dialog()
                 d.ok('[COLOR red]TV[/COLOR] [COLOR white]Guide[/COLOR]', '[COLOR green]Category Order Changed[/COLOR]', 'Please Click [COLOR red]Cancel[/COLOR] in settings to complete')	
         if mode == 1:
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/guide.xml')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/guide.xml.md5')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/guide.xml')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/guide.xml.md5')
         if mode == 2:
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/addons.ini')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/addons.ini.local')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/category_count.ini')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/categories.ini')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/custom_stream_urls.ini')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/channel_id_title.ini')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/mapping.ini')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/custom_stream_urls_autosave.ini')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/icons.ini')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/folders.list')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/tvdb.pickle')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/tvdb_banners.pickle')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/settings.xml')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/guide.xml')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/guide.xml.md5')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/subscriptions.ini')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/channels.ini')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/synopsis_search.list')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/title_search.list')
-            dirs, files = xbmcvfs.listdir('special://profile/addon_data/script.tvguide.Vader/')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/addons.ini')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/addons.ini.local')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/category_count.ini')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/categories.ini')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/custom_stream_urls.ini')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/channel_id_title.ini')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/mapping.ini')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/custom_stream_urls_autosave.ini')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/icons.ini')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/folders.list')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/tvdb.pickle')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/tvdb_banners.pickle')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/settings.xml')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/guide.xml')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/guide.xml.md5')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/subscriptions.ini')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/channels.ini')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/synopsis_search.list')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/title_search.list')
+            dirs, files = xbmcvfs.listdir('special://profile/addon_data/script.tvguide.1080p/')
             for f in files:
-                xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/%s' % f)				
+                xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/%s' % f)				
         if mode == 3:
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/tvdb.pickle')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/tvdb_banners.pickle')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/tvdb.pickle')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/tvdb_banners.pickle')
         if mode in [2,4]:
-            dirs, files = xbmcvfs.listdir('special://profile/addon_data/script.tvguide.Vader/logos')
+            dirs, files = xbmcvfs.listdir('special://profile/addon_data/script.tvguide.1080p/logos')
             for f in files:
-                xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/logos/%s' % f)
+                xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/logos/%s' % f)
         if mode == 5:
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/addons.ini')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/addons.ini.local')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/addons.ini')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/addons.ini.local')
             xbmcvfs.delete('special://profile/addons_custom.ini')			
         if mode == 6:
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/synopsis_search.list')
-            xbmcvfs.delete('special://profile/addon_data/script.tvguide.Vader/title_search.list')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/synopsis_search.list')
+            xbmcvfs.delete('special://profile/addon_data/script.tvguide.1080p/title_search.list')
         if mode == 7:
-            xbmcvfs.delete('special://home/userdata/addon_data/script.tvguide.Vader/settings.xml')
+            xbmcvfs.delete('special://home/userdata/addon_data/script.tvguide.1080p/settings.xml')
         if mode == 8:
-            xbmcvfs.copy('special://home/addons/script.tvguide.Vader/resources/cat.xml','special://profile/addon_data/script.tvguide.Vader/settings.xml')
+            xbmcvfs.copy('special://home/addons/script.tvguide.1080p/resources/cat.xml','special://profile/addon_data/script.tvguide.1080p/settings.xml')

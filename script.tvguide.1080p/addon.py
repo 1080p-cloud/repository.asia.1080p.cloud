@@ -32,16 +32,16 @@ import stat
 import base64,time,datetime
 import xbmcplugin,xbmcgui,urllib,urllib2,re,time,datetime,string,StringIO,logging,random,array,htmllib
 
-ADDON = xbmcaddon.Addon(id='script.tvguide.Vader')
+ADDON = xbmcaddon.Addon(id='script.tvguide.1080p')
 
-file_name = 'Special://home/addons/plugin.video.VADER/addon.xml'
+file_name = 'Special://home/addons/plugin.video.asia.1080p.cloud/addon.xml'
 if xbmcvfs.exists(file_name):
-    xbmcvfs.rename('Special://home/addons/script.tvguide.Vader/resources/skins/Default','Special://home/addons/script.tvguide.Vader/resources/skins/Default_BASIC')
-    xbmcvfs.rename('Special://home/addons/script.tvguide.Vader/resources/skins/VADER','Special://home/addons/script.tvguide.Vader/resources/skins/Default')
+    xbmcvfs.rename('Special://home/addons/script.tvguide.1080p/resources/skins/Default','Special://home/addons/script.tvguide.1080p/resources/skins/Default_BASIC')
+    xbmcvfs.rename('Special://home/addons/script.tvguide.1080p/resources/skins/VADER','Special://home/addons/script.tvguide.1080p/resources/skins/Default')
 if ADDON.getSetting('cat.source') == "0":
-    xbmcvfs.copy('http://localhost:62555/getCategories','special://profile/addon_data/script.tvguide.Vader/categories.ini')
+    xbmcvfs.copy('http://localhost:62555/getCategories','special://profile/addon_data/script.tvguide.1080p/categories.ini')
 elif ADDON.getSetting('cat.source') == "1":
-    xbmcvfs.copy((base64.decodestring('aHR0cDovL3R2c3RyZWFtZXJzLm5ldC9zbXVyZi9WR3VpZGUvQWx0ZXJuYXRpdmUvY2F0ZWdvcmllcy5pbmk=')),'special://profile/addon_data/script.tvguide.Vader/categories.ini')
+    xbmcvfs.copy((base64.decodestring('aHR0cDovL3R2c3RyZWFtZXJzLm5ldC9zbXVyZi9WR3VpZGUvQWx0ZXJuYXRpdmUvY2F0ZWdvcmllcy5pbmk=')),'special://profile/addon_data/script.tvguide.1080p/categories.ini')
 
 if len(sys.argv) > 1:
     category = sys.argv[1]
@@ -55,7 +55,7 @@ if len(sys.argv) > 2:
         ADDON.setSetting('source.source',new_source)
 
 assets = [
-('special://profile/addon_data/script.tvguide.Vader/actions.json','special://home/addons/script.tvguide.Vader/resources/actions.json'),
+('special://profile/addon_data/script.tvguide.1080p/actions.json','special://home/addons/script.tvguide.1080p/resources/actions.json'),
 ]
 for (dst,src) in assets:
     if not xbmcvfs.exists(dst):

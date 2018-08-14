@@ -9,9 +9,9 @@ from rpc import RPC
 def log(x):
     xbmc.log(repr(x))
 
-ADDON = xbmcaddon.Addon(id='script.tvguide.Vader')
+ADDON = xbmcaddon.Addon(id='script.tvguide.1080p')
 
-file_name = 'special://home/userdata/addon_data/script.tvguide.Vader/subscriptions.ini'
+file_name = 'special://home/userdata/addon_data/script.tvguide.1080p/subscriptions.ini'
 f = xbmcvfs.File(file_name,"rb")
 data = f.read()
 f.close()

@@ -6,15 +6,15 @@ import xbmcaddon
 import xbmcvfs
 from rpc import RPC
 
-ADDON = xbmcaddon.Addon(id='script.tvguide.Vader')
+ADDON = xbmcaddon.Addon(id='script.tvguide.1080p')
 
-file_name = 'special://profile/addon_data/script.tvguide.Vader/folders.list'
+file_name = 'special://profile/addon_data/script.tvguide.1080p/folders.list'
 f = xbmcvfs.File(file_name)
 items = f.read().splitlines()
 f.close()
 unique = set(items)
 
-file_name = 'special://profile/addon_data/script.tvguide.Vader/addons.ini'
+file_name = 'special://profile/addon_data/script.tvguide.1080p/addons.ini'
 if int(ADDON.getSetting('addons.ini.type')) == 1:
     customFile = str(ADDON.getSetting('addons.ini.file'))
     if os.path.exists(customFile) and os.access(customFile,os.W_OK):
@@ -89,7 +89,7 @@ for addonId in sorted(plugins):
         f.write(write_str.encode("utf8"))
 f.close()
 
-file_name = 'special://profile/addon_data/script.tvguide.Vader/icons.ini'
+file_name = 'special://profile/addon_data/script.tvguide.1080p/icons.ini'
 f = xbmcvfs.File(file_name,'wb')
 write_str = "# WARNING Make a copy of this file.\n# It will be overwritten on the next folder add.\n\n"
 f.write(write_str.encode("utf8"))
@@ -106,4 +106,4 @@ for addonId in sorted(logos):
 f.close()
 
 dialog = xbmcgui.Dialog()
-dialog.notification("Vader TV Guide","Done: Reload Addon Folders",sound=False)
+dialog.notification("Asia 1080p TV Guide","Done: Reload Addon Folders",sound=False)

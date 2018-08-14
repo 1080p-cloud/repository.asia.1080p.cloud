@@ -32,7 +32,7 @@ import source as src
 
 from strings import *
 
-ADDON = xbmcaddon.Addon(id='script.tvguide.Vader')
+ADDON = xbmcaddon.Addon(id='script.tvguide.1080p')
 
 
 class Autoplay(object):
@@ -59,14 +59,14 @@ class Autoplay(object):
             return
         #timeToAutoplay = 1
         name = self.createAlarmClockName(programTitle, startTime)
-        xbmc.executebuiltin('AlarmClock(%s-start,RunScript(special://home/addons/script.tvguide.Vader/play.py,%s,%s),%d,True)' %
+        xbmc.executebuiltin('AlarmClock(%s-start,RunScript(special://home/addons/script.tvguide.1080p/play.py,%s,%s),%d,True)' %
         (name.encode('utf-8', 'replace'), channelId.encode('utf-8'), startTime, timeToAutoplay - int(ADDON.getSetting('autoplays.before'))))
 
         t = endTime - datetime.datetime.now()
         timeToAutoplay = ((t.days * 86400) + t.seconds) / 60
         #timeToAutoplay = 0
         if ADDON.getSetting('autoplays.stop') == 'true':
-            xbmc.executebuiltin('AlarmClock(%s-stop,RunScript(special://home/addons/script.tvguide.Vader/stop.py,%s,%s),%d,True)' %
+            xbmc.executebuiltin('AlarmClock(%s-stop,RunScript(special://home/addons/script.tvguide.1080p/stop.py,%s,%s),%d,True)' %
             (name.encode('utf-8', 'replace'), channelId.encode('utf-8'), startTime, timeToAutoplay + int(ADDON.getSetting('autoplays.after'))))
 
 

@@ -15,7 +15,7 @@ setting = sys.argv[2]
 def log(x):
     xbmc.log(repr(x))
 
-ADDON = xbmcaddon.Addon(id='script.tvguide.Vader')
+ADDON = xbmcaddon.Addon(id='script.tvguide.1080p')
 
 d = xbmcgui.Dialog()
 
@@ -46,9 +46,9 @@ elif place == "Pixabay":
     if not 'hits' in j:
         quit()
 
-    dirs, files = xbmcvfs.listdir('special://profile/addon_data/script.tvguide.Vader/pick/')
+    dirs, files = xbmcvfs.listdir('special://profile/addon_data/script.tvguide.1080p/pick/')
     for f in files:
-        path = 'special://profile/addon_data/script.tvguide.Vader/pick/'+f
+        path = 'special://profile/addon_data/script.tvguide.1080p/pick/'+f
         success = xbmcvfs.delete(path)
 
     hits = j['hits']
@@ -60,7 +60,7 @@ elif place == "Pixabay":
     for h in hits:
         url = h["previewURL"].replace(': //','://')
         basename= url.rsplit('/',1)[-1]
-        localfile = 'special://profile/addon_data/script.tvguide.Vader/pick/'+basename
+        localfile = 'special://profile/addon_data/script.tvguide.1080p/pick/'+basename
         xbmcvfs.copy(url,localfile)
         image = h["webformatURL"].replace(': //','://')
         if image:
@@ -70,7 +70,7 @@ elif place == "Pixabay":
         p.update(int(percent),"Finding Images",basename)
     p.close()
 
-    what = d.browse(2, 'Image', 'files', '', True, False, 'special://profile/addon_data/script.tvguide.Vader/pick/')
+    what = d.browse(2, 'Image', 'files', '', True, False, 'special://profile/addon_data/script.tvguide.1080p/pick/')
     image = images.get(what,'')
     if image:
         ADDON.setSetting(setting,image)

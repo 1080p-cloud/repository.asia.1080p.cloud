@@ -7,7 +7,7 @@ import json
 
 id_shortcuts = {}
 
-file_name = 'special://profile/addon_data/script.tvguide.Vader/channel_id_title.ini'
+file_name = 'special://profile/addon_data/script.tvguide.1080p/channel_id_title.ini'
 f = xbmcvfs.File(file_name,'rb')
 data = f.read()
 f.close()
@@ -19,7 +19,7 @@ if data:
         if len(id_shortcut) == 2:
             id_shortcuts[id_shortcut[0]] = id_shortcut[1]
 
-shortcut_file_name = 'special://profile/addon_data/script.tvguide.Vader/channel_id_shortcut.ini'
+shortcut_file_name = 'special://profile/addon_data/script.tvguide.1080p/channel_id_shortcut.ini'
 f = xbmcvfs.File(shortcut_file_name,'rb')
 data = f.read()
 f.close()

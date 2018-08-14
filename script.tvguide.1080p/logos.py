@@ -8,9 +8,9 @@ import urllib
 import requests
 from rpc import RPC
 
-ADDON = xbmcaddon.Addon(id='script.tvguide.Vader')
+ADDON = xbmcaddon.Addon(id='script.tvguide.1080p')
 
-file_name = 'special://profile/addon_data/script.tvguide.Vader/folders.list'
+file_name = 'special://profile/addon_data/script.tvguide.1080p/folders.list'
 f = xbmcvfs.File(file_name)
 items = f.read().splitlines()
 f.close()
@@ -43,9 +43,9 @@ for path in unique:
     for file in thumbnails:
         thumb = thumbnails[file]
         thumbs[file] = thumb
-logo_folder = 'special://profile/addon_data/script.tvguide.Vader/addon_logos/'
+logo_folder = 'special://profile/addon_data/script.tvguide.1080p/addon_logos/'
 for addonId in sorted(logos):
-    folder = 'special://profile/addon_data/script.tvguide.Vader/addon_logos/%s' % addonId
+    folder = 'special://profile/addon_data/script.tvguide.1080p/addon_logos/%s' % addonId
     xbmcvfs.mkdirs(folder)
     addonLogos = logos[addonId]
     for label in sorted(addonLogos):
@@ -73,4 +73,4 @@ for addonId in sorted(logos):
 
 
 dialog = xbmcgui.Dialog()
-dialog.notification("Vader TV Guide","Done: Download Logos")
+dialog.notification("Asia 1080p TV Guide","Done: Download Logos")

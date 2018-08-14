@@ -108,7 +108,7 @@
                 <font>font13</font>
                 <textcolor>white</textcolor>
 				<visible>false</visible>
-                <label>$ADDON[script.tvguide.Vader 30501]</label>
+                <label>$ADDON[script.tvguide.1080p 30501]</label>
             </control>
         </control>
 
@@ -121,7 +121,7 @@
             <aligny>center</aligny>
             <font>font13_title</font>
             <textcolor>white</textcolor>
-            <label>$ADDON[script.tvguide.Vader 30500]</label>
+            <label>$ADDON[script.tvguide.1080p 30500]</label>
         </control>
 		<control type="label">
             <description>Help and Tips</description>
@@ -135,7 +135,7 @@
             <aligny>top</aligny>
 			<wrapmultiline>true</wrapmultiline>
 			<autoscroll time="3600" delay="6000" repeat="6000">true</autoscroll>
-			<label>$ADDON[script.tvguide.Vader 30501]</label>
+			<label>$ADDON[script.tvguide.1080p 30501]</label>
         </control>
         <control type="fixedlist" id="6000">
             <posx>640</posx>
@@ -275,7 +275,7 @@
             <font>font13</font>
             <textcolor>white</textcolor>
             <focusedcolor>black</focusedcolor>
-            <label>$ADDON[script.tvguide.Vader 30502]</label>
+            <label>$ADDON[script.tvguide.1080p 30502]</label>
             <texturefocus>tvg-button-focus.png</texturefocus>
             <texturenofocus>tvg-button-nofocus.png</texturenofocus>
             <onleft>6005</onleft>
@@ -292,7 +292,7 @@
             <font>font13</font>
             <textcolor>white</textcolor>
             <focusedcolor>black</focusedcolor>
-            <label>$ADDON[script.tvguide.Vader 30503]</label>
+            <label>$ADDON[script.tvguide.1080p 30503]</label>
             <texturefocus>tvg-button-focus.png</texturefocus>
             <texturenofocus>tvg-button-nofocus.png</texturenofocus>
             <onleft>6003</onleft>

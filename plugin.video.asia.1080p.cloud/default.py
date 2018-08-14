@@ -981,7 +981,7 @@ def vaderguide():
     # if enable_pvr:
     #     xbmc.executebuiltin("XBMC.ActivateWindow(tvguide)")
     # else:
-    xbmc.executebuiltin('XBMC.RunAddon(script.tvguide.Vader)')
+    xbmc.executebuiltin('XBMC.RunAddon(script.tvguide.1080p)')
 
 
     endOfDirectory(plugin.handle)
@@ -992,7 +992,7 @@ def tvguide():
     # if enable_pvr:
     xbmc.executebuiltin("XBMC.ActivateWindow(tvguide)")
     # else:
-    # xbmc.executebuiltin('XBMC.RunAddon(script.tvguide.Vader)')
+    # xbmc.executebuiltin('XBMC.RunAddon(script.tvguide.1080p)')
 
 
     endOfDirectory(plugin.handle)
@@ -1021,7 +1021,7 @@ if __name__ == '__main__':
         start = datetime.now()
         vaderClass = vader.vader()
         plugin.run()
-        utils.log('Vader function ran in {0}ms'.format(str(datetime.now() - start)))
+        utils.log('Asia.1080p function ran in {0}ms'.format(str(datetime.now() - start)))
         del vaderClass
         del plugin
         del __addon__

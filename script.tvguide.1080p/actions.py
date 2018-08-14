@@ -19,5 +19,5 @@
 #
 import xbmcvfs,xbmcgui
 
-xbmcvfs.copy('special://home/addons/script.tvguide.Vader/resources/actions.json','special://profile/addon_data/script.tvguide.Vader/actions.json')
+xbmcvfs.copy('special://home/addons/script.tvguide.1080p/resources/actions.json','special://profile/addon_data/script.tvguide.1080p/actions.json')
 xbmcgui.Dialog().notification("TV Guide","Action Bar Reset")

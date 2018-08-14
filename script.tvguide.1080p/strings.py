@@ -26,7 +26,7 @@
 #
 import xbmcaddon
 
-ADDON = xbmcaddon.Addon(id = 'script.tvguide.Vader')
+ADDON = xbmcaddon.Addon(id = 'script.tvguide.1080p')
 
 NO_DESCRIPTION = 30000
 CALCULATING_REMAINING_TIME = 30002

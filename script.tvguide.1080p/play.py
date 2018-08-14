@@ -3,16 +3,16 @@ import xbmc,xbmcaddon
 import sqlite3
 from vpnapi import VPNAPI
 
-ADDON = xbmcaddon.Addon(id='script.tvguide.Vader')
+ADDON = xbmcaddon.Addon(id='script.tvguide.1080p')
 
 channel = sys.argv[1]
 start = sys.argv[2]
 
-path = xbmc.translatePath('special://profile/addon_data/script.tvguide.Vader/source.db')
+path = xbmc.translatePath('special://profile/addon_data/script.tvguide.1080p/source.db')
 try:
     conn = sqlite3.connect(path, detect_types=sqlite3.PARSE_DECLTYPES)
 except Exception as detail:
-    xbmc.log("EXCEPTION: (script.tvguide.Vader)  %s" % detail, xbmc.LOGERROR)
+    xbmc.log("EXCEPTION: (script.tvguide.1080p)  %s" % detail, xbmc.LOGERROR)
 
 c = conn.cursor()
 c.execute('SELECT stream_url FROM custom_stream_url WHERE channel=?', [channel])

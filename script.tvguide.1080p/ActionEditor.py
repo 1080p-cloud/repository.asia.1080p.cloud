@@ -334,7 +334,7 @@ def getCommandActions():
         actions = commands[command]
         actions = [ACTIONS[x] for x in actions]
         commands[command] = actions
-    f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/commands.json','rb')
+    f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/commands.json','rb')
     j = f.read()
     f.close()
     if j:
@@ -421,7 +421,7 @@ if __name__ == '__main__':
                 actions = save_commands[command]
                 actions = [ACTIONS[x] for x in actions]
                 save_commands[command] = actions
-            f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/commands.json','wb')
+            f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/commands.json','wb')
             f.write(json.dumps(save_commands,indent=2))
             f.close()
             quit()

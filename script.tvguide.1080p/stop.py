@@ -2,7 +2,7 @@ import sys
 import xbmc,xbmcaddon
 import sqlite3
 
-ADDON = xbmcaddon.Addon(id='script.tvguide.Vader')
+ADDON = xbmcaddon.Addon(id='script.tvguide.1080p')
 
 channel = sys.argv[1]
 start = sys.argv[2]

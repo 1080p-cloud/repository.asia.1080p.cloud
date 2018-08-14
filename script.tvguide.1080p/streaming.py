@@ -35,7 +35,7 @@ import xbmcaddon
 class StreamsService(object):
     def __init__(self, addon):
         self.addon = addon
-        self.path = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.tvguide.Vader', 'addons.ini'))
+        self.path = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.tvguide.1080p', 'addons.ini'))
         self.addonsParser = ConfigParser.ConfigParser(dict_type=OrderedDict)
         self.addonsParser.optionxform = lambda option: option
         try:

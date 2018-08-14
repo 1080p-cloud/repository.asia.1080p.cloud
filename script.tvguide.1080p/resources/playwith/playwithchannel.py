@@ -6,7 +6,7 @@ import datetime,time
 channel = sys.argv[1]
 start = sys.argv[2]
 
-ADDON = xbmcaddon.Addon(id='script.tvguide.Vader')
+ADDON = xbmcaddon.Addon(id='script.tvguide.1080p')
 
 def adapt_datetime(ts):
     # http://docs.python.org/2/library/sqlite3.html#registering-an-adapter-callable
@@ -20,12 +20,12 @@ def convert_datetime(ts):
 
 sqlite3.register_adapter(datetime.datetime, adapt_datetime)
 sqlite3.register_converter('timestamp', convert_datetime)
-path = xbmc.translatePath('special://profile/addon_data/script.tvguide.Vader/source.db')
+path = xbmc.translatePath('special://profile/addon_data/script.tvguide.1080p/source.db')
 try:
     conn = sqlite3.connect(path, detect_types=sqlite3.PARSE_DECLTYPES)
     conn.row_factory = sqlite3.Row
 except Exception as detail:
-    xbmc.log("EXCEPTION: (script.tvguide.Vader)  %s" % detail, xbmc.LOGERROR)
+    xbmc.log("EXCEPTION: (script.tvguide.1080p)  %s" % detail, xbmc.LOGERROR)
 
 c = conn.cursor()
 startDate = datetime.datetime.fromtimestamp(float(start))

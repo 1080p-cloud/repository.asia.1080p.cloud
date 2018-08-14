@@ -46,11 +46,11 @@ def select_countries():
     if result:
         ids = [list_items[i][0] for i in result]
         countries = ','.join(ids)
-        xbmcaddon.Addon(id = 'script.tvguide.Vader').setSetting('yo.countries',countries)
+        xbmcaddon.Addon(id = 'script.tvguide.1080p').setSetting('yo.countries',countries)
 
 
 def select_providers():
-    s = xbmcaddon.Addon(id = 'script.tvguide.Vader').getSetting('yo.countries')
+    s = xbmcaddon.Addon(id = 'script.tvguide.1080p').getSetting('yo.countries')
     if not s:
         return
     countries = s.split(',')
@@ -77,7 +77,7 @@ def select_providers():
     if index == -1:
         return
     headend = data[index]["Value"]
-    xbmcaddon.Addon(id = 'script.tvguide.Vader').setSetting('yo.%s.headend' % country, headend)
+    xbmcaddon.Addon(id = 'script.tvguide.1080p').setSetting('yo.%s.headend' % country, headend)
 
 
 if __name__ == '__main__':

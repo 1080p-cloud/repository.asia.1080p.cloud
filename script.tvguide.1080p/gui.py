@@ -134,7 +134,7 @@ if ADDON.getSetting('skin.source') == "0":
     SKIN_PATH = ADDON.getAddonInfo('path')
 elif ADDON.getSetting('skin.source') == "1":
     SKIN = ADDON.getSetting('skin.user')
-    SKIN_PATH = xbmc.translatePath("special://profile/addon_data/script.tvguide.Vader/")
+    SKIN_PATH = xbmc.translatePath("special://profile/addon_data/script.tvguide.1080p/")
 elif ADDON.getSetting('skin.source') == "2":
     SKIN = ADDON.getSetting('skin.user')
     SKIN_PATH = ADDON.getSetting('skin.folder')
@@ -340,59 +340,59 @@ class TVGuide(xbmcgui.WindowXML):
         return super(TVGuide, cls).__new__(cls, 'script-tvguide-main.xml', SKIN_PATH, SKIN)
 
     def Matchcenter(self):
-        mc = 'plugin://plugin.video.VADER/mc/'
+        mc = 'plugin://plugin.video.asia.1080p.cloud/mc/'
         xbmc.executebuiltin("XBMC.PlayMedia(" + mc + ")")
 
     def LSport(self):
-        mc = 'Videos,plugin://plugin.video.VADER/livetv/category/26&quot;,return'
+        mc = 'Videos,plugin://plugin.video.asia.1080p.cloud/livetv/category/26&quot;,return'
         xbmc.executebuiltin("XBMC.ActivateWindow(" + mc + ")")
 
     def tvs1(self):
-        mc = 'Videos,plugin://plugin.video.VADER/vod/category/55/'
+        mc = 'Videos,plugin://plugin.video.asia.1080p.cloud/vod/category/55/'
         xbmc.executebuiltin("XBMC.ActivateWindow(" + mc + ")")
 
     def tvs4k(self):
-        mc = 'Videos,plugin://plugin.video.VADER/vod/category/737/'
+        mc = 'Videos,plugin://plugin.video.asia.1080p.cloud/vod/category/737/'
         xbmc.executebuiltin("XBMC.ActivateWindow(" + mc + ")")
 
     def wbvod(self):
-        mc = 'Videos,plugin://plugin.video.VADER/vod/recent/tvshows'
+        mc = 'Videos,plugin://plugin.video.asia.1080p.cloud/vod/recent/tvshows'
         xbmc.executebuiltin("XBMC.ActivateWindow(" + mc + ")")
 
     def movies1(self):
-        mc = 'Videos,plugin://plugin.video.VADER/vod/category/53/'
+        mc = 'Videos,plugin://plugin.video.asia.1080p.cloud/vod/category/53/'
         xbmc.executebuiltin("XBMC.ActivateWindow(" + mc + ")")
 
     def movies4k(self):
-        mc = 'Videos,plugin://plugin.video.VADER/vod/category/687/'
+        mc = 'Videos,plugin://plugin.video.asia.1080p.cloud/vod/category/687/'
         xbmc.executebuiltin("XBMC.ActivateWindow(" + mc + ")")
 
     def moviesby(self):
-        mc = 'Videos,plugin://plugin.video.VADER/vod/recent/movies'
+        mc = 'Videos,plugin://plugin.video.asia.1080p.cloud/vod/recent/movies'
         xbmc.executebuiltin("XBMC.ActivateWindow(" + mc + ")")
 
     def VVOD(self):
-        mc = 'Videos,plugin://plugin.video.VADER/vod/category/all/'
+        mc = 'Videos,plugin://plugin.video.asia.1080p.cloud/vod/category/all/'
         xbmc.executebuiltin("XBMC.ActivateWindow(" + mc + ")")
 
     def LiveTVChannels(self):
-        mc = 'Videos,plugin://plugin.video.VADER/livetv/category/all'
+        mc = 'Videos,plugin://plugin.video.asia.1080p.cloud/livetv/category/all'
         xbmc.executebuiltin("XBMC.ActivateWindow(" + mc + ")")
 
     def TVcatchup(self):
-        mc = 'Videos,plugin://plugin.video.VADER/catchup/tv'
+        mc = 'Videos,plugin://plugin.video.asia.1080p.cloud/catchup/tv'
         xbmc.executebuiltin("XBMC.ActivateWindow(" + mc + ")")
 
     def MatchcenterCatchup(self):
-        mc = 'Videos,plugin://plugin.video.VADER/catchup/mc'
+        mc = 'Videos,plugin://plugin.video.asia.1080p.cloud/catchup/mc'
         xbmc.executebuiltin("XBMC.ActivateWindow(" + mc + ")")
 
     def ATools(self):
-        mc = 'plugin://plugin.video.VADER/tools'
+        mc = 'plugin://plugin.video.asia.1080p.cloud/tools'
         xbmc.executebuiltin("XBMC.PlayMedia(" + mc + ")")
 
     def MyAccount(self):
-        mc = 'Videos,plugin://plugin.video.VADER/accountInfo'
+        mc = 'Videos,plugin://plugin.video.asia.1080p.cloud/accountInfo'
         xbmc.executebuiltin("XBMC.ActivateWindow(" + mc + ")")
 
     def __init__(self):
@@ -454,7 +454,7 @@ class TVGuide(xbmcgui.WindowXML):
             except:
                 pass
 
-        f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/categories.ini', 'rb')
+        f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/categories.ini', 'rb')
         lines = f.read().splitlines()
         f.close()
         categories = set()
@@ -499,7 +499,7 @@ class TVGuide(xbmcgui.WindowXML):
                                                       seconds=self.quickViewStartDate.second)
 
     def loadTVDBImages(self):
-        file_name = 'special://profile/addon_data/script.tvguide.Vader/tvdb.pickle'
+        file_name = 'special://profile/addon_data/script.tvguide.1080p/tvdb.pickle'
         if xbmcvfs.exists(file_name):
             f = open(xbmc.translatePath(file_name), 'rb')
             if f:
@@ -520,7 +520,7 @@ class TVGuide(xbmcgui.WindowXML):
             return super(TVGuide, self).getControl(controlId)
         except Exception as detail:
             # log(traceback.print_stack())
-            # xbmc.log("EXCEPTION: (script.tvguide.Vader) TVGuide.getControl %s" % detail, xbmc.LOGERROR)
+            # xbmc.log("EXCEPTION: (script.tvguide.1080p) TVGuide.getControl %s" % detail, xbmc.LOGERROR)
             if controlId in self.ignoreMissingControlIds:
                 return None
             if not self.isClosing:
@@ -535,14 +535,14 @@ class TVGuide(xbmcgui.WindowXML):
                     self.player.stop()
                     self.clear_catchup()
 
-            f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/tvdb.pickle', 'wb')
+            f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/tvdb.pickle', 'wb')
             try:
                 pickle.dump(self.tvdb_urls, f)
             except:
                 pass
             f.close()
 
-            file_name = 'special://profile/addon_data/script.tvguide.Vader/custom_stream_urls_autosave.ini'
+            file_name = 'special://profile/addon_data/script.tvguide.1080p/custom_stream_urls_autosave.ini'
             xbmcvfs.copy(file_name, file_name + ".last")
             f = xbmcvfs.File(file_name, 'wb')
             if self.database:
@@ -1266,7 +1266,7 @@ class TVGuide(xbmcgui.WindowXML):
                 if ret < 0:
                     return
 
-                f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/categories.ini', 'rb')
+                f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/categories.ini', 'rb')
                 lines = f.read().splitlines()
                 f.close()
                 categories = {}
@@ -1333,7 +1333,7 @@ class TVGuide(xbmcgui.WindowXML):
                         listControl.reset()
                         listControl.addItems(items)
 
-                f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/categories.ini', 'wb')
+                f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/categories.ini', 'wb')
                 for cat in categories:
                     channels = categories[cat]
                     for channel in channels:
@@ -1395,7 +1395,7 @@ class TVGuide(xbmcgui.WindowXML):
 
 
         else:
-            xbmc.log('[script.tvguide.Vader] Unhandled ActionId: ' + str(action.getId()), xbmc.LOGDEBUG)
+            xbmc.log('[script.tvguide.1080p] Unhandled ActionId: ' + str(action.getId()), xbmc.LOGDEBUG)
 
     def onActionQuickEPGMode(self, action):
         if action.getId() == ACTION_MOUSE_MOVE:
@@ -1463,7 +1463,7 @@ class TVGuide(xbmcgui.WindowXML):
         elif action.getId() in COMMAND_ACTIONS["MENU"] and controlInFocus is not None:
             program = self._getQuickProgramFromControl(controlInFocus)
         else:
-            xbmc.log('[script.tvguide.Vader] quick epg Unhandled ActionId: ' + str(action.getId()), xbmc.LOGDEBUG)
+            xbmc.log('[script.tvguide.1080p] quick epg Unhandled ActionId: ' + str(action.getId()), xbmc.LOGDEBUG)
 
     def pip_toggle(self):
         if ADDON.getSetting('epg.video.pip') == 'false':
@@ -1492,7 +1492,7 @@ class TVGuide(xbmcgui.WindowXML):
         import gui
         xbmc.executebuiltin('XBMC.ActivateWindow(home)')
         xbmc.sleep(1050)
-        xbmcvfs.delete('special://home/userdata/addon_data/script.tvguide.Vader/source.db')
+        xbmcvfs.delete('special://home/userdata/addon_data/script.tvguide.1080p/source.db')
         w = gui.TVGuide()
         w.doModal()
         xbmc.sleep(1050)
@@ -1924,7 +1924,7 @@ class TVGuide(xbmcgui.WindowXML):
         except:
             if self.currentProgram:
                 title = self.currentProgram.title
-        file_name = "special://profile/addon_data/script.tvguide.Vader/title_search.list"
+        file_name = "special://profile/addon_data/script.tvguide.1080p/title_search.list"
         f = xbmcvfs.File(file_name, "rb")
         searches = sorted(f.read().splitlines())
         f.close()
@@ -1981,7 +1981,7 @@ class TVGuide(xbmcgui.WindowXML):
     def descriptionSearch(self):
         d = xbmcgui.Dialog()
         title = ''
-        file_name = "special://profile/addon_data/script.tvguide.Vader/synopsis_search.list"
+        file_name = "special://profile/addon_data/script.tvguide.1080p/synopsis_search.list"
         f = xbmcvfs.File(file_name, "rb")
         searches = sorted(f.read().splitlines())
         f.close()
@@ -2037,7 +2037,7 @@ class TVGuide(xbmcgui.WindowXML):
 
     def categorySearch(self):
         d = xbmcgui.Dialog()
-        f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/category_count.ini', "rb")
+        f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/category_count.ini', "rb")
         category_count = [x.split("=", 1) for x in f.read().splitlines()]
         f.close()
         categories = []
@@ -2350,7 +2350,7 @@ class TVGuide(xbmcgui.WindowXML):
                         catchup, title, program.language))
         elif buttonClicked == PopupMenu.C_POPUP_SEARCH:
             if ADDON.getSetting('search.type') == 'MySearch':
-                script = "special://home/addons/script.tvguide.Vader/search.py"
+                script = "special://home/addons/script.tvguide.1080p/search.py"
                 if xbmcvfs.exists(script):
                     if program.season:
                         xbmc.executebuiltin(
@@ -3071,7 +3071,7 @@ class TVGuide(xbmcgui.WindowXML):
         if not self.playing_catchup_channel:
             return
         self.playing_catchup_channel = False
-        filename = 'special://profile/addon_data/script.tvguide.Vader/catchup_channel.list'
+        filename = 'special://profile/addon_data/script.tvguide.1080p/catchup_channel.list'
         f = xbmcvfs.File(filename, 'rb')
         alarms = f.read().splitlines()
         f.close()
@@ -3094,7 +3094,7 @@ class TVGuide(xbmcgui.WindowXML):
             return
         now = datetime.datetime.now()
         offset = now - programList[0].startDate
-        f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/catchup_channel.list', 'wb')
+        f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/catchup_channel.list', 'wb')
         first_cmd = None
         for program in programList:
             program.startDate += offset
@@ -3263,10 +3263,10 @@ class TVGuide(xbmcgui.WindowXML):
             ffmpeg = ADDON.getSetting('autoplaywiths.ffmpeg')
             if ffmpeg:
                 folder = ADDON.getSetting('autoplaywiths.folder')
-                script = "special://home/addons/script.tvguide.Vader/playwithchannel.py"
+                script = "special://home/addons/script.tvguide.1080p/playwithchannel.py"
                 xbmc.executebuiltin('RunScript(%s,%s,%s)' % (script, channel.id, timestamp))
 
-            script = "special://profile/addon_data/script.tvguide.Vader/playwithchannel.py"
+            script = "special://profile/addon_data/script.tvguide.1080p/playwithchannel.py"
             if xbmcvfs.exists(script):
                 xbmc.executebuiltin('RunScript(%s,%s,%s)' % (script, channel.id, timestamp))
             core = ADDON.getSetting('autoplaywiths.player')
@@ -3282,10 +3282,10 @@ class TVGuide(xbmcgui.WindowXML):
         ffmpeg = ADDON.getSetting('autoplaywiths.ffmpeg')
         if ffmpeg:
             folder = ADDON.getSetting('autoplaywiths.folder')
-            script = "special://home/addons/script.tvguide.Vader/stopwithchannel.py"
+            script = "special://home/addons/script.tvguide.1080p/stopwithchannel.py"
             xbmc.executebuiltin('RunScript(%s)' % (script))
 
-        script = "special://profile/addon_data/script.tvguide.Vader/stopwithchannel.py"
+        script = "special://profile/addon_data/script.tvguide.1080p/stopwithchannel.py"
         if xbmcvfs.exists(script):
             xbmc.executebuiltin('RunScript(%s)' % (script))
         xbmc.Player().stop()
@@ -4122,14 +4122,14 @@ class TVGuide(xbmcgui.WindowXML):
             self.clear_catchup()
 
     def saveActions(self):
-        file_name = 'special://profile/addon_data/script.tvguide.Vader/actions.json'
+        file_name = 'special://profile/addon_data/script.tvguide.1080p/actions.json'
         f = xbmcvfs.File(file_name, "wb")
         data = json.dumps(self.actions, indent=2)
         f.write(data)
         f.close()
 
     def loadActions(self):
-        file_name = 'special://profile/addon_data/script.tvguide.Vader/actions.json'
+        file_name = 'special://profile/addon_data/script.tvguide.1080p/actions.json'
         f = xbmcvfs.File(file_name, "rb")
         data = f.read()
         f.close()
@@ -4831,7 +4831,7 @@ class PopupMenu(xbmcgui.WindowXMLDialog):
                         icon = addon.getAddonInfo('icon')
                 else:
                     name = "Playlist"
-                    icon = xbmcaddon.Addon('script.tvguide.Vader').getAddonInfo('icon')
+                    icon = xbmcaddon.Addon('script.tvguide.1080p').getAddonInfo('icon')
                 if name:
                     try:
                         control = self.getControl(self.C_POPUP_ADDON_LABEL)
@@ -4901,7 +4901,7 @@ class PopupMenu(xbmcgui.WindowXMLDialog):
             if ret < 0:
                 return
 
-            f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/categories.ini', 'rb')
+            f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/categories.ini', 'rb')
             lines = f.read().splitlines()
             f.close()
             categories = {}
@@ -4949,7 +4949,7 @@ class PopupMenu(xbmcgui.WindowXMLDialog):
             elif ret == 2:
                 categories[self.category] = []
 
-            f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/categories.ini', 'wb')
+            f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/categories.ini', 'wb')
             for cat in categories:
                 channels = categories[cat]
                 for channel in channels:
@@ -5489,7 +5489,7 @@ class StreamSetupDialog(xbmcgui.WindowXMLDialog):
                     icon = addon.getAddonInfo('icon')
             else:
                 name = "Playlist"
-                icon = xbmcaddon.Addon('script.tvguide.Vader').getAddonInfo('icon')
+                icon = xbmcaddon.Addon('script.tvguide.1080p').getAddonInfo('icon')
             if name:
                 try:
                     control = self.getControl(self.C_STREAM_ADDON_LABEL)
@@ -5563,7 +5563,7 @@ class StreamSetupDialog(xbmcgui.WindowXMLDialog):
                         playlist_streams[name.strip()] = url.strip()
 
                     # TODO make this a function
-                    file_name = 'special://profile/addon_data/script.tvguide.Vader/addons.ini'
+                    file_name = 'special://profile/addon_data/script.tvguide.1080p/addons.ini'
                     f = xbmcvfs.File(file_name)
                     items = f.read().splitlines()
                     f.close()
@@ -5583,7 +5583,7 @@ class StreamSetupDialog(xbmcgui.WindowXMLDialog):
                                 if url:
                                     streams[addonId][name] = url
 
-                    addonId = "script.tvguide.Vader"
+                    addonId = "script.tvguide.1080p"
                     if addonId not in streams:
                         streams[addonId] = {}
                     for name in playlist_streams:
@@ -5626,7 +5626,7 @@ class StreamSetupDialog(xbmcgui.WindowXMLDialog):
                         url = "pvr://channels/%s/All channels/%s" % (group, streamUrl)
                         channels[url] = channelname
             # TODO make this a function
-            file_name = 'special://profile/addon_data/script.tvguide.Vader/addons.ini'
+            file_name = 'special://profile/addon_data/script.tvguide.1080p/addons.ini'
             f = xbmcvfs.File(file_name)
             items = f.read().splitlines()
             f.close()
@@ -5646,7 +5646,7 @@ class StreamSetupDialog(xbmcgui.WindowXMLDialog):
                         if url:
                             streams[addonId][name] = url
 
-            addonId = "script.tvguide.Vader"
+            addonId = "script.tvguide.1080p"
             if addonId not in streams:
                 streams[addonId] = {}
             for url in channels:
@@ -5863,7 +5863,7 @@ class StreamSetupDialog(xbmcgui.WindowXMLDialog):
         listControl.addItems(items)
 
     def updateDirsInfo(self):
-        file_name = 'special://profile/addon_data/script.tvguide.Vader/folders.list'
+        file_name = 'special://profile/addon_data/script.tvguide.1080p/folders.list'
         f = xbmcvfs.File(file_name)
         lines = f.read().splitlines()
         folders = []
@@ -5922,7 +5922,7 @@ class StreamSetupDialog(xbmcgui.WindowXMLDialog):
         listControl.addItems(items)
 
     def updateBrowseInfo(self):
-        file_name = 'special://profile/addon_data/script.tvguide.Vader/folders.list'
+        file_name = 'special://profile/addon_data/script.tvguide.1080p/folders.list'
         f = xbmcvfs.File(file_name)
         lines = f.read().splitlines()
         folders = []
@@ -5994,7 +5994,7 @@ class StreamSetupDialog(xbmcgui.WindowXMLDialog):
         listControl.addItems(items)
 
     def addBrowseFolder(self):
-        file_name = 'special://profile/addon_data/script.tvguide.Vader/folders.list'
+        file_name = 'special://profile/addon_data/script.tvguide.1080p/folders.list'
         f = xbmcvfs.File(file_name)
         lines = f.read().splitlines()
         folders = {}
@@ -6024,7 +6024,7 @@ class StreamSetupDialog(xbmcgui.WindowXMLDialog):
         f.write(lines)
         f.close()
 
-        file_name = 'special://profile/addon_data/script.tvguide.Vader/addons.ini'
+        file_name = 'special://profile/addon_data/script.tvguide.1080p/addons.ini'
         f = xbmcvfs.File(file_name)
         items = f.read().splitlines()
         f.close()
@@ -6089,7 +6089,7 @@ class StreamSetupDialog(xbmcgui.WindowXMLDialog):
                 f.write(write_str)
         f.close()
 
-        file_name = 'special://profile/addon_data/script.tvguide.Vader/icons.ini'
+        file_name = 'special://profile/addon_data/script.tvguide.1080p/icons.ini'
 
         f = xbmcvfs.File(file_name)
         items = f.read().splitlines()
@@ -6425,7 +6425,7 @@ class CatMenu(xbmcgui.WindowXMLDialog):
                 if ret < 0:
                     return
 
-                f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/categories.ini', 'rb')
+                f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/categories.ini', 'rb')
                 lines = f.read().splitlines()
                 f.close()
                 categories = {}
@@ -6492,7 +6492,7 @@ class CatMenu(xbmcgui.WindowXMLDialog):
                         listControl.reset()
                         listControl.addItems(items)
 
-                f = xbmcvfs.File('special://profile/addon_data/script.tvguide.Vader/categories.ini', 'wb')
+                f = xbmcvfs.File('special://profile/addon_data/script.tvguide.1080p/categories.ini', 'wb')
                 for cat in categories:
                     channels = categories[cat]
                     for channel in channels:
